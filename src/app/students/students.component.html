@@ -1,0 +1,23 @@
+<header class="header">
+  <h1>Student Management System</h1>
+</header>
+
+<main class="container">
+  <section class="list-header">
+    <h2>List of Students</h2>
+    <button class="add-btn" (click)="goToCreateStudent()">
+      Add Student
+    </button>
+  </section>
+
+  <article
+    class="student-card"
+    *ngFor="let student of students"
+  >
+    <h3>{{ student.name }}</h3>
+    <p><strong>Course:</strong> {{ student.course }}</p>
+    <p><strong>Year Level:</strong> {{ student.year }}</p>
+
+    <button class="delete-btn">Delete</button>
+  </article>
+</main>
