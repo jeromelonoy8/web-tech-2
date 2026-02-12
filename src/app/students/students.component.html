@@ -5,19 +5,19 @@
 <main class="container">
   <section class="list-header">
     <h2>List of Students</h2>
-    <button class="add-btn" (click)="goToCreateStudent()">
-      Add Student
-    </button>
+      <a class="add-btn" [routerLink]="['/create-student']">Add Student</a>
   </section>
 
-  <article
-    class="student-card"
-    *ngFor="let student of students"
-  >
-    <h3>{{ student.name }}</h3>
-    <p><strong>Course:</strong> {{ student.course }}</p>
-    <p><strong>Year Level:</strong> {{ student.year }}</p>
+  @for (student of students(); track student.id) {
+    <article class="student-card">
+      <h3>{{ student.first_name }} {{ student.last_name }}</h3>
+<p><strong>Year Level:</strong> {{ student.year_level }}</p>
 
-    <button class="delete-btn">Delete</button>
-  </article>
+
+      <button class="delete-btn" (click)="deleteStudent(student.id)">Delete</button>
+    </article>
+  } @empty {
+    <span>No students found</span>
+  }
 </main>
+
